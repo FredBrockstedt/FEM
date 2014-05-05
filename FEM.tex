@@ -124,9 +124,9 @@
 \tableofcontents
 \newpage
 \section{Theoretically Background}
-\begin{defi} a differential equation is an equation satisfied by a function $u$, which involves besides $u$ its derivates
+\begin{defi} a differential equation is an equation satisfied by a function $u$, which involves besides $u$ its derivatives
   \begin{enumerate}
-  \item $u$ depends on only one variable (ordinary differential equatations)
+  \item $u$ depends on only one variable (ordinary differential equations)
   \item $u$ depends on more than one variable ($\p_i u:= \f{\p u (z)}{\p z_i}$ partial differential equations (PDE))
   \end{enumerate}
 \end{defi}
@@ -134,24 +134,24 @@
 elliptic, hyperbolic, parabolic
 
 \begin{enumerate}
-\item elliptic: an incident at $z$ influences all points in the neighbourhood.
+\item elliptic: an incident at $z$ influences all points in the neighborhoods.
 \item parabolic: there is one direction from $z$ where the influence is only for larger values
 \item there are areas of influence
 \end{enumerate}
-\begin{defi} The principle part of the secound order PDE
-  $$-\sum_{i,j=1}^n \p_i a_{i,j}(z)\p_j u(z) + \sum_{i=1}^n b(z)\p_iu(z) + c(z) u(z) = f(z)$$
+\begin{defi} The principle part of the second order PDE
+  $$-\sum_{i,j=1}^n \p_i a_{i,j}(z)\p_j u(z) + \sum_{i=1}^n b(z)\p_i u(z) + c(z) u(z) = f(z)$$
   is $$\sum_{i,j=1}^n \p_i a_{i,j}(z) \p_j u_j(z)$$
 \end{defi}
 \begin{defi}
   \begin{enumerate}
   \item the PDE is elliptic at z if the eigenvalues of A are all non-zero and of the same sign
-  \item parabolic if one eigenvalue is 0 and the rest all positive or all negativ
+  \item parabolic if one eigenvalue is 0 and the rest all positive or all negative
   \item hyperbolic if n-1 eigenvalues have the same sign and on has the other sign
   \end{enumerate}
 \end{defi}
 
 \begin{exa} Stationary heat equation\\
-  In absence of work the conservation of energy correspondens to the coversation of temperature
+  In absence of work the conservation of energy correspondents to the coversation of temperature
   $$f{\p u}{\p t}(x,t) + \tri j (x,t)= f(x,t)$$
   where
   \begin{enumerate}
@@ -159,15 +159,15 @@ elliptic, hyperbolic, parabolic
   \item j is the heat flux with unit [j]=$1\f{W}{m^2}$
   \item f is a heat source with unit [f]=$1\f{W}{m^3}$
   \end{enumerate}
-  As constituive equation (material property) we have Fouriers law 
+  As constitutive equation (material property) we have Fouriers law 
   $$j(x,t)=-A(x)\tri u(x,t)$$
   We call the material 
   \begin{enumerate}
-  \item homogenous if $A(x)=A$, inhomogenous otherwise
+  \item homogeneous if $A(x)=A$, inhomogenous otherwise
   \item isotropic if $A(x)= \aa(z)1,$ anisotropic otherwise
   \end{enumerate}
 \end{exa}
-For a unique solution u of constituve equation we need initial conditions
+For a unique solution u of constitutive equation we need initial conditions
 $$u(x,0)= u_0 (x)$$
 and boundary conditions on boundary $\p \OO$ of $\OO$
 \begin{enumerate}
@@ -175,8 +175,8 @@ and boundary conditions on boundary $\p \OO$ of $\OO$
 \item $j(x,t) n(x) = h(x,t)$ for $x \in \p\OO, t>0$ (Neumann b.c.)
 \item $j(x,t) n(x) + \bb(x) u(x,t) = h(x,t)$ (Robin b.c.)
 \end{enumerate}
-Static emit of constituive equatation.\\
-we sppose that the temperature does not change in time i.e. $\f{\p u}{\p t}=0$
+Static emit of constitute equatation.\\
+we suppose that the temperature does not change in time i.e. $\f{\p u}{\p t}=0$
 $$\drw \tri j(x) = f,\ j(x)=-A \tri u \drw -\tri A(x)\tri u(x) = f(x) + b.c.$$
 
 
@@ -186,11 +186,11 @@ The same system arises in
 \item electro static, where u is the electric potential, j is the displacement field (usually denoted by D), f is the charge density (usually denoted by $\rho$)
 \item stationary electric currents, where u is the electric potential and j is the electric current, f=0
 \end{enumerate}
-Well posednesi\\
+Well posedness\\
 \begin{defi} A problem is said to be well posed if 
   \begin{enumerate}
   \item it has a unique solution $u$, and
-  \item the solution depends continously on the given data f i.e. $||u||\leq C ||f||$
+  \item the solution depends continuously on the given data f i.e. $||u||\leq C ||f||$
   \end{enumerate}
 \end{defi}
 Recall transient/stationary heat equation
@@ -212,18 +212,18 @@ with b.c's
   \end{align*}
   $Re(c)\geq 0$, $0<\aa_0\leq Re(a) \leq a \leq \infty$\end{comm}
 \begin{defi}classical Solution:\\
-  If $u \in C^2(\OO)\cap C(\bar\OO)$ satisfies the PDE as well as the b.c's in a pointous sense, then u is calles classical solution of the BVP
+  If $u \in C^2(\OO)\cap C(\bar\OO)$ satisfies the PDE as well as the b.c's in a pointous sense, then u is called classical solution of the BVP
 \end{defi}
 \begin{comm}
   \begin{enumerate}
-  \item existence of classical solution is a requiremten of some numerical scheme, e.g. the finite difference methode (FDM)
-  \item this requirement will be weakend when introducing the variational formulation.
+  \item existence of classical solution is a requirement of some numerical scheme, e.g. the finite difference method (FDM)
+  \item this requirement will be weakened when introducing the variational formulation.
   \end{enumerate}
 \end{comm}
 \begin{corr}
   Small perturbation in the data of a linear, well posed problem lead to small perturbation of the solution
 \end{corr}
-Proof: $\tilde f = f + \delta f , \delta f <<1$, then $atilde u$ solves the prolem with data $\tilde f$ and $\delta u = \tilde u - u$ solves the problem with the data of $\drw ||\delta u || \leq C||\delta f||$
+Proof: $\tilde f = f + \delta f , \delta f <<1$, then $a \tilde u$ solves the problem with data $\tilde f$ and $\delta u = \tilde u - u$ solves the problem with the data of $\drw ||\delta u || \leq C||\delta f||$
 
 \begin{exa} how to proof well-posed (Serial 1 1.b)\\
   find $u(x,1) $ with initial data $sin(n\pi x) ,\ n \in \NN$
@@ -237,7 +237,7 @@ Proof: $\tilde f = f + \delta f , \delta f <<1$, then $atilde u$ solves the prol
 \end{exa}
 \subsection{Numerical solutions of elliptic BVP}
 \begin{comm}
-  Closed form solution versus nummerical solution
+  Closed form solution versus numerical solution
   \begin{enumerate}
   \item only most elementary PDE have closed form solutions
   \item but even if they exist, there value can be questioned
@@ -254,27 +254,27 @@ Proof: $\tilde f = f + \delta f , \delta f <<1$, then $atilde u$ solves the prol
   $$u(x,y) = 1 - y^2 -\f{32}{\pi^3} \sum_{n=1}^\infty \f{(-1)^k cosh(\f{2k+1}{2}\pi x) cos(\f{2k+1}{2}\pi y)}{(2k+1)^3cosh(\f{2k+1}{2}\pi)}$$
   Problems:
   \begin{enumerate}
-  \item infinite summ need to be truncated: very often the number of summands is prohibitivly large to sufficent accurary
+  \item infinite sum need to be truncated: very often the amount of terms of the sum is prohibitively large to sufficient accuracy
   \item for large k $$\f{cosh(\f{2k+1}{2}\pi x)}{cosh(\f{2k+1}{2}\pi)}$$
-    the nummerical calculations is far from trivial.
-  \item A modification of the b.c's may result in a totally diffrent schemes.
+    the numerical calculations is far from trivial.
+  \item A modification of the b.c's may result in a totally different schemes.
     
   \end{enumerate}
 \end{exa}
-\subsubsection{Finite Diffrence Method (FDM)}
+\subsubsection{Finite Difference Method (FDM)}
 If a classical solution of the BVP exists (which implies that $u\in C^2(\OO)$), we can replace the derivatives by different quotients.\\
 
-Let d=1 and $\OO\subset \RR$ be an interved, h>0, Then, if $u \in C^{n+1}(\OO)$ then we can employ the  Taylor theorem, which gives:
+Let d=1 and $\OO\subset \RR$ be an interval, h>0, Then, if $u \in C^{n+1}(\OO)$ then we can employ the  Taylor theorem, which gives:
 $$u(x\pm h) = u(x)\pm hu'(x) + \f{h^2}{2}u''(x) + ...+\f{\pm h^n}{n!}u^{(n)}(x)+ R_n(u,x,h)$$
 with the remainder 
 $$R_n(u,x,h)=\f{1}{n!}\int^{x\pm h}_x (x-t)^n u ^{n+1}(t)dt= \f{\pm h^{n+1}}{(n+1)!} u^{(n+1)(\eta)}$$
 for some $\eta \in [x,x\pm h]$\\
 \begin{enumerate}
-\item $\drw$ first order forward diffrence quotient\\
+\item $\drw$ first order forward difference quotient\\
   $$\f{u(x+h) -u(x)}{h}= u'(x) + \O(h)$$
-\item $\drw$ first order backward diffrence quotient\\
+\item $\drw$ first order backward difference quotient\\
   $$\f{u(x) -u(x-h)}{h}= u'(x) + \O(h)$$
-\item $\drw$ secound order centered diffrence quotient\\
+\item $\drw$ second order centered difference quotient\\
   $$\f{u(x+h) -u(x-h)}{2h}= u'(x) + \O(h^2)$$
 \item $\drw$ standard d.q.\\
   $$\f{u(x+h) -2u(x) +u(x-h)}{h^2}= u''(x) + \O(h^2)$$
@@ -288,9 +288,9 @@ advantages of FDM
 disadvantages of FDM
 \begin{enumerate}
 \item required of classical solution
-\item a(x) needs to be continously diff.
+\item a(x) needs to be continuously diff.
 \item limitation to simple domains
-\item pointwise approximation
+\item point-wise approximation
 \end{enumerate}
 \subsubsection{Finite Element Method}
 \begin{enumerate}
@@ -298,12 +298,12 @@ disadvantages of FDM
 \item possibility for more complicated domains
 \end{enumerate}
 \begin{comm}
-  Key indrigents
+  Key ingredients
   \begin{enumerate}
-  \item transfomration of BVP from strong formation to a so-called variational (weak) formation
+  \item transformation of BVP from strong formation to a so-called variational (weak) formation
   \item Discretization of the computational domain $\drw$ irregular meshes instead of grid
     \begin{itemize}
-    \item based on mesh we define basis functions of discrete supspace of the space where we loof for the weak solution
+    \item based on mesh we define basis functions of discrete sup-space of the space where we look for the weak solution
     \item basic solutions have a local support
     \end{itemize}
   \end{enumerate}
@@ -313,28 +313,28 @@ disadvantages of FDM
 \begin{defi}
   \begin{itemize}
   \item domain $\OO$: bounded, connected, open subset of $\RR^d$, d=1,2,3
-  \item boundary $\p\OO:=\bar\OO \backslash \OO$ at least $C^0-$continous and closed.
+  \item boundary $\p\OO:=\bar\OO \backslash \OO$ at least $C^0-$continuous and closed.
   \end{itemize}
   Furthermore, the domain needs to be a Lipschitz-domain
   \begin{itemize}
   \item boundary is of finite length (excluding fractal boundaries)
-  \item boundary slightly smoother than continous (excluding slit/cusp domains)
+  \item boundary slightly smoother than continuous (excluding slit/cusp domains)
   \end{itemize}
 \end{defi}
 \begin{comm}
-  In practise only domains can be described by CAD software are relevant. This set of domains is usually equivalent to the following set of domains\end{comm}
+  In practice only domains can be described by CAD software are relevant. This set of domains is usually equivalent to the following set of domains\end{comm}
 
 \begin{defi}
   Let d=2. A connected domain $\OO$ is called \emph{curvilinear Lipschitz-polygon} if 
   \begin{itemize}
   \item $\OO$ is Lipschitz
-  \item there is a finite number of open subsetd $\GG_K\subset \p\OO, k=1,...,p\in \NN$, such that 
+  \item there is a finite number of open subsets $\GG_K\subset \p\OO, k=1,...,p\in \NN$, such that 
     $$\p\OO=\bar\GG_1\cup....\cup \bar\GG_p,\ \GG_k\cap \GG_l=\emptyset \ \forall k\neq l$$
     and for each $k\in\left\{1,...,p\right\}$ there exists a $C^1-$diffeomorphism (invertible mapping of smooth manifolds) $\Phi_k : [0,1]\to \GG_k$
   \end{itemize}
 \end{defi}
 \begin{defi}
-  A subset $\OO\subset \RR^d$ is called \emph{computational domain} if it is bounded and its boundary is $C^1-$continous, or if it is 
+  A subset $\OO\subset \RR^d$ is called \emph{computational domain} if it is bounded and its boundary is $C^1-$continuous, or if it is 
   \begin{itemize}
   \item bounded connected interval(d=1)
   \item a curvilinear Lipschitz-polygon(d=2)
@@ -349,7 +349,7 @@ disadvantages of FDM
     the \emph{partied deriviate of order} $|\aa|$\\
   \item the \emph{gradient} of a function f 
     $$\nabla f (x) = (\f{\p f}{\p x_1}(x),...,\f{\p f}{\p x_p}(x))^{(T)}$$
-  \item \emph{divergenz} of a vector field $ f=(f_1,...,f_d)^{(T)}$
+  \item \emph{divergence} of a vector field $ f=(f_1,...,f_d)^{(T)}$
     $$\nabla \cdot f(x) = \sum_{i=1}^d \f{\p f_i}{\p x_i}(x)$$
   \item \emph{Laplacian}
     $$\Delta :=\tri \cdot \tri$$
@@ -359,7 +359,7 @@ disadvantages of FDM
 \begin{theorem} Gau\ss{}-Theorem\\
   If $f \in(C^1(\OO))^d\cap (C^0(\bar\OO))^d$ then 
   $$\int_\OO \tri \cdot f d\ x = \int_\GG f \cdot n d\ s$$
-  By the product rule $\tri \cdot (u f )= u \tri \cdot f + \tri u \cdot f$ we deduce the Grenne formula
+  By the product rule $\tri \cdot (u f )= u \tri \cdot f + \tri u \cdot f$ we deduce the Green's formula
   $$\int_\OO f \cdot \tri u + \tri \cdot f u d\ x = \int_\GG f \cdot n u d\ s$$
   for all $f \in(C^1(\OO))^d\cap (C^0(\bar\OO))^d$ and $u \in(C^1(\OO))^d\cap (C^0(\bar\OO))^d$
 \end{theorem}
@@ -372,7 +372,7 @@ disadvantages of FDM
     
   \end{itemize}
 \end{exa}
-\subsection{Disribuitional derivations}
+\subsection{Distributional derivations}
 \begin{defi} Test function space\\
   For a non-empty open set $\OO \subset \RR^d$ we denote 
   $$\cinf_0 (\OO) := \left\{v \in \cinf(\OO) : supp\ v := \left\{x \in \OO: v(x)\neq 0 \right\} \subset \OO\right\}$$
@@ -384,7 +384,7 @@ disadvantages of FDM
   for all test functions $v \in \cinf_0(\OO	)$
 \end{lemma}
 \begin{defi}
-  Let $u \in L^2(\OO)$ and $\aa \in \NN^d _0$. A function $w \in L^2(\OO)$ is calles \emph{weak derivate} or \emph{distributioned derivate} $\p^\aa u$ (of order $|\aa|$) of u, if 
+  Let $u \in L^2(\OO)$ and $\aa \in \NN^d _0$. A function $w \in L^2(\OO)$ is called \emph{weak derivative} or \emph{distributional derivative} $\p^\aa u$ (of order $|\aa|$) of u, if 
   $$\int w v d\ x = (-1)^{|\aa|} \int _\OO u \p^\aa v d\ x$$
   for all $v \in \cinf_0(\OO)$
 
@@ -399,27 +399,27 @@ disadvantages of FDM
   for all $v \in \cinf_0(\OO)$
 \end{itemize}
 \begin{theorem}
-  If $u \in C^m(\bar\OO)$ then al weak derivates of order $\leq 0$ agree in $L^2(\OO)$ with the corresponding classical derivates.
+  If $u \in C^m(\bar\OO)$ then all weak derivatives of order $\leq 0$ agree in $L^2(\OO)$ with the corresponding classical derivative.
 \end{theorem}
 \begin{comm}Extension of integration by parts\\
 
-  For Lipschitz domaiuns the Gau\ss{}-theorem (and hence also (7G7)) can be extended to integrable functions with weak derivates
+  For Lipschitz domains the Gau\ss{}-theorem (and hence also (7G7)) can be extended to integrable functions with weak derivative
 \end{comm}
-\begin{comm} Weak derivates in subdomains\\
-  The weak derivates in $\OO$ and in a subdomain $\OO_1 \subset \OO$ coincede in $\OO_1$ since the space of test functions satisfy $\cinf_0(\OO) \subset \cinf_0(\OO_1)$
+\begin{comm} Weak derivatives in sub domains\\
+  The weak derivative in $\OO$ and in a sub domain $\OO_1 \subset \OO$ coincide in $\OO_1$ since the space of test functions satisfy $\cinf_0(\OO) \subset \cinf_0(\OO_1)$
 \end{comm}
-\begin{comm} Continuity over interfaces of subdomains\\
-  For the partition $\bar\OO = \bar\OO_1 \cup \bar\OO_2, \OO_1\cap\OO_2=\emptyset,$ where both subdomains are supposed to have a Lipschitz boundary, a function u, which has a weak gradient in $\OO_1$ and $\OO_2$has a weak gradient in $\OO$ if and only if $[u]_2 = 0$ $$\sum:= \p \OO_1 \cap\p \OO_2$$
+\begin{comm} Continuity over interfaces of sub domains\\
+  For the partition $\bar\OO = \bar\OO_1 \cup \bar\OO_2, \OO_1\cap\OO_2=\emptyset,$ where both sub domains are supposed to have a Lipschitz boundary, a function u, which has a weak gradient in $\OO_1$ and $\OO_2$has a weak gradient in $\OO$ if and only if $[u]_2 = 0$ $$\sum:= \p \OO_1 \cap\p \OO_2$$
 \end{comm}
 \begin{defi} extra remarks to computational domain\\
   An open, connected set $\OO \subset \RR^d $ is called \emph{Lipschitz-domain}, if its boundary $\p\OO:=\bar\OO\backslash \OO$ is \emph{Lipschitz boundary} which is equivalent to 
   \begin{itemize}
-  \item $\exists$ finite vovering of $\p\OO$ of open subsets of $\RR^d$, and 
-  \item $\p \OO$ i locally (for each open rectangle) the graph of a Lipschitz continous function
+  \item $\exists$ finite covering of $\p\OO$ of open subsets of $\RR^d$, and 
+  \item $\p \OO$ i locally (for each open rectangle) the graph of a Lipschitz continuous function
   \end{itemize}
 \end{defi}
 \begin{defi}
-  curvi linear lipschitz polygon\\
+  curvi linear Lipschitz polygon\\
   d=2 \ A Lipschitz domain $\OO\subset \RR^d$ is called a c.L.p. if $\exists $ finite number of open subsets $\GG_k \subset \p \OO$, $k=1,...,P, P\in \NN$ s.t. $\forall k \exists C^1$-diffeomorphism $\Phi_k : [0,1] \to \GG_k$
 
 \end{defi}
@@ -462,7 +462,7 @@ $$\int_\OO a \tri u \cdot \tri v + c u v d\ x + \int_\GG \bb u v d\ S(x) = \int_
 \begin{exa} 
   $\OO= (0,1).$ Give an example of a function $u \in C^1(\OO)$ that does not posses a weak gradient bounded in $L^2(\OO)$\\
   Recall Thm 2.7.\\
-  If $u \in C^m(\bar\OO)$, then all weak derivates of order $\leq m$ agree in $L^2(\OO)$ with the classical deriate\\
+  If $u \in C^m(\bar\OO)$, then all weak derivatives of order $\leq m$ agree in $L^2(\OO)$ with the classical derivative\\
   For example:
   \begin{align*}
     f(x) &= ln\ x\\
@@ -516,7 +516,7 @@ Let $V,W$ be real/complex vector spaces
 \item positive definite $\left|b\left(v,v\right)\right|=0\iff v\neq0$
 \item V-continuous (or V-bounded) $\left|b\left(u,v\right)\right|\le\underset{\mbox{continuity constant}}{\underbrace{\left|\left|b\right|\right|}\left|\left|u\right|\right|_{V}\left|\left|v\right|\right|_{V}}$
   $\forall u,v\in V$
-\item V-elliptive (also coersive) $\left|b\left(v,v\right)\right|\ge\underset{\mbox{ellipticity constant}}{\underbrace{\gamma}\left|\left|v\right|\right|_{V}^{2}}$
+\item V-elliptive (also coercive) $\left|b\left(v,v\right)\right|\ge\underset{\mbox{ellipticity constant}}{\underbrace{\gamma}\left|\left|v\right|\right|_{V}^{2}}$
   $\forall v\in V$
 \end{itemize}
 A symmetric positive definite bi-/sesquilinear form is an \emph{inner
@@ -532,35 +532,35 @@ in (LVP) is symmetric, positive definite, it is called \emph{energy
 
   \subsection{Sobolev spaces}
   \begin{defi}
-    A normed vector space V is complet, if every Cauchy sequence $\left\{ v_k \right\}_k \subset V$ has a limit in V. A normed, complete vector space is called Banach space\end{defi}
+    A normed vector space V is complete, if every Cauchy sequence $\left\{ v_k \right\}_k \subset V$ has a limit in V. A normed, complete vector space is called Banach space\end{defi}
   \begin{defi}
-    A Hilbert space is a Banachspace whose norm is induced by a inner produkt.\end{defi}
-  Recall variational formulation of BVP with pase, homogenous Neumann b.c.
+    A Hilbert space is a Banachspace whose norm is induced by a inner product.\end{defi}
+  Recall variational formulation of BVP with pase, homogeneous Neumann b.c.
   $$\int_\OO a \tri u \cdot \tri v + cuv d\ x = \int_\OO fv d\ x$$
   for all test functions v$\in \cinf _0(\OO)$\\
-  \emph{Ideal space} of u and v in 2.9. is a Hilbert space whose inner product coincedes with the bilinear form, i.e. it is equipped with the energy norm
+  \emph{Ideal space} of u and v in 2.9. is a Hilbert space whose inner product coincides with the bilinear form, i.e. it is equipped with the energy norm
   $$||v||_e ^2 = \int |a||\tri v |^2 +|c||v|^2 d\ x $$
   and the space is defined as 
   $$ H:= \left\{v : \OO \to \RR | \tx{weak gradient }\tri v \tx{ exists and } ||v||_e <\infty \right\}$$
-  The same spplies also to the test function, that are now more functions than in $\cinf_0$(equatation due to Meyser-Serrin Theorem, see Thm.2.15)
+  The same applies also to the test function, that are now more functions than in $\cinf_0$(equatation due to Meyser-Serrin Theorem, see Thm.2.15)
   \begin{defi}
-    The sobolev space $H^1(\OO)$ is the space of all square integrable functione with square integrable weak gradients
+    The Sobolev space $H^1(\OO)$ is the space of all square integrable function's with square integrable weak gradients
     $$H^1(\OO) := \left\{v\in L^2(\OO) : \tx{weak gradient }\tri v \tx{ exists and } ||\tri v||_{L^2} <\infty \right\}$$
     with norm $$||v||^2 _{H^1(\OO)} = ||v||^2 _{L^2(\OO)} + D^2 ||\tri v||_{L^2(\OO)}$$
     where $D= diam (\OO)$ to meet unit ....
 
 
-    The $H^1$-norm and the energy norm are equivaled if the latter is base on a $H^1-$elliptic and $H^1-$continous bilinear form, i.e. $\exists C_1,C_2>0$ such that:
+    The $H^1$-norm and the energy norm are equivalent if the latter is base on a $H^1-$elliptic and $H^1-$continuous bilinear form, i.e. $\exists C_1,C_2>0$ such that:
     $$C_1 ||v||_e \leq ||v||_{H^1 }\leq C_2||v||_e \ \forall v \in H^1(\OO)$$
   \end{defi}
-  \begin{defi} For $m \in \NN_0$ and $\OO\subset \RR^d$ we define the sobolev of order m as ...
+  \begin{defi} For $m \in \NN_0$ and $\OO\subset \RR^d$ we define the Sobolev of order m as ...
   \end{defi}
 
   \begin{theorem} 2.15. Meyser-Serrin theorem\\
     The space $C^\infty(\bar\OO)$is a dense subspace of $H^m(\OO)$ for all $m \in \NN_0$
   \end{theorem}
   \begin{defi}
-    $H^1 _0 (\OO)$ is defined as the completation of $\cinf_0(\OO)$ with respect to the $H^1-$norm
+    $H^1 _0 (\OO)$ is defined as the completion of $\cinf_0(\OO)$ with respect to the $H^1-$norm
   \end{defi}
   \begin{exa}
     Consider
@@ -568,7 +568,7 @@ in (LVP) is symmetric, positive definite, it is called \emph{energy
       -\tri \cdot a \tri u + cu & = f & \in \OO \\
       u                         & =0  & on\ \p\OO
     \end{align*}
-    solutionway:
+    solution:
     \begin{align*}
       (a) & \int_\OO a \tri u \cdot \tri v + cuv d\ x & = \int_\OO fv d\ x + \int_{\p\OO} \tri u \cdot n v d\ s(x) & \forall v \in \cinf_0(\OO)                 \\
       (b) & ||v||_e ^2                                & := \int_\OO a \tri v \cdot \tri v + cvv d\ x                                                            \\
@@ -580,16 +580,16 @@ in (LVP) is symmetric, positive definite, it is called \emph{energy
   \end{exa}
   \subsection{Theory of variational formulations}
   \subsubsection{Elliptics and the Lemma of Lax-Milgram}
-  \begin{defi} The dual V' of a normal vector space V is the normed vector space of continous linear forms on V. The dual space is equipped with the operator norm 
+  \begin{defi} The dual V' of a normal vector space V is the normed vector space of continuous linear forms on V. The dual space is equipped with the operator norm 
     $$||f||_{V'} := sup\ _{v \in V\backslash \left\{0\right\}} \f{f(v)}{||v||_V}$$
   \end{defi}
   \begin{theorem}2.21 Lemma of Lax-Milgram\\
-    Let V be a reflexive Banach space. Let bilinear form $b:V \times V \to \RR$ or sequilinear form $b:V\times V \to \CC$ be V-elliptic. Then, the variational problem (LVP), i.e. $b(u,v) = l(v)$ has for any $f \in V'$ a unique solution $u \in V$ with 
+    Let V be a reflexive Banach space. Let bilinear form $b:V \times V \to \RR$ or sesquilinear form $b:V\times V \to \CC$ be V-elliptic. Then, the variational problem (LVP), i.e. $b(u,v) = l(v)$ has for any $f \in V'$ a unique solution $u \in V$ with 
     $$||u||_V \leq \f{1}{\gg_e}||f||_{V'}$$
   \end{theorem}
   \subsubsection{ The inf-sup conditions }
   \begin{theorem}
-    The following staetements are equivalent
+    The following statements are equivalent
     \begin{enumerate}
     \item For all $f \in V'$ the linear variational Problem (LVP) has a unique solution $u \in U$ that satisfies 
       $$||u||_U \leq \f{1}{\gg}||f||_{V'}$$
@@ -601,3 +601,4 @@ in (LVP) is symmetric, positive definite, it is called \emph{energy
   \end{theorem}
   
   \end{document}
+
