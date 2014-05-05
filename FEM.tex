@@ -20,6 +20,11 @@
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{graphics}
+
+%% create an index 
+\usepackage{makeidx}
+\makeindex 
+
 \newcommand{\p}{\partial}
 \newcommand{\NN}{\mathbb{N}}			%creates symbol for natural numbers
 \newcommand{\ZZ}{\mathbb{Z}}			%creates symbol for integral numbers
@@ -104,6 +109,7 @@
 \newcommand{\ortho}{\bot}
 \newcommand{\tbf}[1]{\textbf{#1}}
 \newcommand{\tr}[1]{\tx{ tr }({#1})}
+
 \begin{document}
 \begin{titlepage}
   \begin{center}
@@ -117,14 +123,14 @@
     {\Large  {SS 14\\ }}
     \vspace{15mm}
     {\Large written by Juri Schmelzer  \\
-                         graphics by Fred Brockstedt}
+      graphics by Fred Brockstedt}
   \end{center}
 \end{titlepage}
 \newpage
 \tableofcontents
 \newpage
 \section{Theoretically Background}
-\begin{defi} a differential equation is an equation satisfied by a function $u$, which involves besides $u$ its derivatives
+\begin{defi} a \index{differential equation}differential equation is an equation satisfied by a function $u$, which involves besides $u$ its derivatives
   \begin{enumerate}
   \item $u$ depends on only one variable (ordinary differential equations)
   \item $u$ depends on more than one variable ($\p_i u:= \f{\p u (z)}{\p z_i}$ partial differential equations (PDE))
@@ -134,19 +140,19 @@
 elliptic, hyperbolic, parabolic
 
 \begin{enumerate}
-\item elliptic: an incident at $z$ influences all points in the neighborhoods.
-\item parabolic: there is one direction from $z$ where the influence is only for larger values
+\item elliptic \index{elliptic}: an incident at $z$ influences all points in the neighborhoods.
+\item parabolic \index{parabolic}: there is one direction from $z$ where the influence is only for larger values
 \item there are areas of influence
 \end{enumerate}
-\begin{defi} The principle part of the second order PDE
+\begin{defi} The principle part of the second order PDE \index{PDE}
   $$-\sum_{i,j=1}^n \p_i a_{i,j}(z)\p_j u(z) + \sum_{i=1}^n b(z)\p_i u(z) + c(z) u(z) = f(z)$$
   is $$\sum_{i,j=1}^n \p_i a_{i,j}(z) \p_j u_j(z)$$
 \end{defi}
 \begin{defi}
   \begin{enumerate}
-  \item the PDE is elliptic at z if the eigenvalues of A are all non-zero and of the same sign
-  \item parabolic if one eigenvalue is 0 and the rest all positive or all negative
-  \item hyperbolic if n-1 eigenvalues have the same sign and on has the other sign
+  \item the PDE is elliptic \index{elliptic} at z if the eigenvalues of A are all non-zero and of the same sign
+  \item parabolic \index{parabolic} if one eigenvalue is 0 and the rest all positive or all negative
+  \item hyperbolic \index{hyperbolic} if n-1 eigenvalues have the same sign and on has the other sign
   \end{enumerate}
 \end{defi}
 
@@ -163,13 +169,13 @@ elliptic, hyperbolic, parabolic
   $$j(x,t)=-A(x)\tri u(x,t)$$
   We call the material 
   \begin{enumerate}
-  \item homogeneous if $A(x)=A$, inhomogenous otherwise
-  \item isotropic if $A(x)= \aa(z)1,$ anisotropic otherwise
+  \item homogeneous \index{homogeneous} if $A(x)=A$, inhomogenous otherwise
+  \item isotropic \index{isotropic} if $A(x)= \aa(z)1,$ anisotropic otherwise
   \end{enumerate}
 \end{exa}
 For a unique solution u of constitutive equation we need initial conditions
 $$u(x,0)= u_0 (x)$$
-and boundary conditions on boundary $\p \OO$ of $\OO$
+and boundary conditions \index{boundary condition} on boundary $\p \OO$ of $\OO$
 \begin{enumerate}
 \item $u(x,t)= g(x,t)$ for $x \in \p \OO, t>0$ (Dirichlet b.c.)
 \item $j(x,t) n(x) = h(x,t)$ for $x \in \p\OO, t>0$ (Neumann b.c.)
@@ -221,7 +227,7 @@ with b.c's
   \end{align*}
   $Re(c)\geq 0$, $0<\aa_0\leq Re(a) \leq a \leq \infty$\end{comm}
 \begin{defi}classical Solution:\\
-  If $u \in C^2(\OO)\cap C(\bar\OO)$ satisfies the PDE as well as the b.c's in a pointous sense, then u is called classical solution of the BVP
+  If $u \in C^2(\OO)\cap C(\bar\OO)$ satisfies the PDE as well as the b.c's in a pointous sense, then u is called classical \index{classical solution} solution of the BVP
 \end{defi}
 \begin{comm}
   \begin{enumerate}
@@ -309,16 +315,16 @@ disadvantages of FDM
 \begin{comm}
   Key ingredients
   \begin{enumerate}
-  \item transformation of BVP from strong formation to a so-called variational (weak) formation
+  \item transformation of BVP from strong formation to a so-called variational \index{variational} (weak) formation
   \item Discretization of the computational domain $\drw$ irregular meshes instead of grid
 
-\begin{figure}[tbh]
-  \begin{center}
-    \includegraphics[width=\textwidth]{figs/differentGrids.pdf}
-  \end{center}
-  \caption{Different types of grids}
-  \label{different-grids-figure}
-\end{figure}
+    \begin{figure}[tbh]
+      \begin{center}
+        \includegraphics[width=\textwidth]{figs/differentGrids.pdf}
+      \end{center}
+      \caption{Different types of grids}
+      \label{different-grids-figure}
+    \end{figure}
 
     \begin{itemize}
     \item based on mesh we define basis functions of discrete sup-space of the space where we look for the weak solution
@@ -353,7 +359,7 @@ disadvantages of FDM
   In practice only domains can be described by CAD software are relevant. This set of domains is usually equivalent to the following set of domains\end{comm}
 
 \begin{defi}
-  Let d=2. A connected domain $\OO$ is called \emph{curvilinear Lipschitz-polygon} if 
+  Let d=2. A connected domain $\OO$ is called  \index{curvilinear} \emph{curvilinear Lipschitz-polygon} if 
   \begin{itemize}
   \item $\OO$ is Lipschitz
   \item there is a finite number of open subsets $\GG_K\subset \p\OO, k=1,...,p\in \NN$, such that 
@@ -371,7 +377,7 @@ disadvantages of FDM
 \end{figure}
 
 \begin{defi}
-  A subset $\OO\subset \RR^d$ is called \emph{computational domain} if it is bounded and its boundary is $C^1-$continuous, or if it is 
+  A subset $\OO\subset \RR^d$ is called \emph{computational  domain} \index{computational} if it is bounded and its boundary is $C^1-$continuous, or if it is 
   \begin{itemize}
   \item bounded connected interval(d=1)
   \item a curvilinear Lipschitz-polygon(d=2)
@@ -421,7 +427,7 @@ disadvantages of FDM
   for all test functions $v \in \cinf_0(\OO	)$
 \end{lemma}
 \begin{defi}
-  Let $u \in L^2(\OO)$ and $\aa \in \NN^d _0$. A function $w \in L^2(\OO)$ is called \emph{weak derivative} or \emph{distributional derivative} $\p^\aa u$ (of order $|\aa|$) of u, if 
+  Let $u \in L^2(\OO)$ and $\aa \in \NN^d _0$. A function $w \in L^2(\OO)$ is called \emph{weak derivative} \index{weak derivative} or \emph{distributional derivative} \index{distributional derivative} $\p^\aa u$ (of order $|\aa|$) of u, if 
   $$\int w v d\ x = (-1)^{|\aa|} \int _\OO u \p^\aa v d\ x$$
   for all $v \in \cinf_0(\OO)$
 
@@ -449,7 +455,7 @@ disadvantages of FDM
   For the partition $\bar\OO = \bar\OO_1 \cup \bar\OO_2, \OO_1\cap\OO_2=\emptyset,$ where both sub domains are supposed to have a Lipschitz boundary, a function u, which has a weak gradient in $\OO_1$ and $\OO_2$has a weak gradient in $\OO$ if and only if $[u]_2 = 0$ $$\sum:= \p \OO_1 \cap\p \OO_2$$
 \end{comm}
 \begin{defi} extra remarks to computational domain\\
-  An open, connected set $\OO \subset \RR^d $ is called \emph{Lipschitz-domain}, if its boundary $\p\OO:=\bar\OO\backslash \OO$ is \emph{Lipschitz boundary} which is equivalent to 
+  An open, connected set $\OO \subset \RR^d $ is called \emph{Lipschitz-domain} \index{Lipschitz-domain}, if its boundary $\p\OO:=\bar\OO\backslash \OO$ is \emph{Lipschitz boundary} which is equivalent to 
   \begin{itemize}
   \item $\exists$ finite covering of $\p\OO$ of open subsets of $\RR^d$, and 
   \item $\p \OO$ i locally (for each open rectangle) the graph of a Lipschitz continuous function
@@ -457,7 +463,7 @@ disadvantages of FDM
 \end{defi}
 \begin{defi}
   curvi linear Lipschitz polygon\\
-  d=2 \ A Lipschitz domain $\OO\subset \RR^d$ is called a c.L.p. if $\exists $ finite number of open subsets $\GG_k \subset \p \OO$, $k=1,...,P, P\in \NN$ s.t. $\forall k \exists C^1$-diffeomorphism $\Phi_k : [0,1] \to \GG_k$
+  d=2 \ A Lipschitz domain $\OO\subset \RR^d$ is called a \index{c.L.p.} c.L.p. if $\exists $ finite number of open subsets $\GG_k \subset \p \OO$, $k=1,...,P, P\in \NN$ s.t. $\forall k \exists C^1$-diffeomorphism $\Phi_k : [0,1] \to \GG_k$
 
 \end{defi}
 \subsection{Variational formulations of elliptic BVPs}
@@ -484,7 +490,7 @@ FGF
 $$\int_\OO f \cdot \tri u + \tri \cdot f u d\ x = \int_\GG f\cdot n u d\ S(x)$$
 $$f= a \tri u \drw \int_\OO a\tri u \cdot \tri v d\ x - \int_\GG a \tri u \cdot n v d\ S(x)=-\int_\OO \tri \cdot a \tri u v d\ x$$
 $$\drw \int_\OO a \tri u \cdot \tri v + c u v d\ x - \int_\GG \underbrace{a\tri u \cdot n}_{=h} v d\ S(x) = \int_\OO f v d\ x \ \forall v\in\cinf(\bar\OO)$$
-Boundary condition which are present in the variational formulation are called natural b.c.
+Boundary condition which are present in the variational formulation are called \index{natural boundary condition} natural b.c.
 \subsubsection{Robin b.c.'s}
 $$\int_{\OO}a \tri u \cdot \tri v + c u v d\ x - \int_\GG \underbrace{a \tri u}_{h-\bb u} \cdot n v d\ S(x) = \int_\OO f v d\ x$$
 $$\int_\OO a \tri u \cdot \tri v + c u v d\ x + \int_\GG \bb u v d\ S(x) = \int_\OO f v d\ x + \int_\GG g v d\ S(x) \forall v \in \cinf (\bar\OO)$$
@@ -567,75 +573,77 @@ in (LVP) is symmetric, positive definite, it is called \emph{energy
 
 %% missing part end
 
-  \subsection{Sobolev spaces}
-  \begin{defi}
-    A normed vector space V is complete, if every Cauchy sequence $\left\{ v_k \right\}_k \subset V$ has a limit in V. A normed, complete vector space is called Banach space\end{defi}
-  \begin{defi}
-    A Hilbert space is a Banachspace whose norm is induced by a inner product.\end{defi}
-  Recall variational formulation of BVP with pase, homogeneous Neumann b.c.
-  $$\int_\OO a \tri u \cdot \tri v + cuv d\ x = \int_\OO fv d\ x$$
-  for all test functions v$\in \cinf _0(\OO)$\\
-  \emph{Ideal space} of u and v in 2.9. is a Hilbert space whose inner product coincides with the bilinear form, i.e. it is equipped with the energy norm
-  $$||v||_e ^2 = \int |a||\tri v |^2 +|c||v|^2 d\ x $$
-  and the space is defined as 
-  $$ H:= \left\{v : \OO \to \RR | \tx{weak gradient }\tri v \tx{ exists and } ||v||_e <\infty \right\}$$
-  The same applies also to the test function, that are now more functions than in $\cinf_0$(equatation due to Meyser-Serrin Theorem, see Thm.2.15)
-  \begin{defi}
-    The Sobolev space $H^1(\OO)$ is the space of all square integrable function's with square integrable weak gradients
-    $$H^1(\OO) := \left\{v\in L^2(\OO) : \tx{weak gradient }\tri v \tx{ exists and } ||\tri v||_{L^2} <\infty \right\}$$
-    with norm $$||v||^2 _{H^1(\OO)} = ||v||^2 _{L^2(\OO)} + D^2 ||\tri v||_{L^2(\OO)}$$
-    where $D= diam (\OO)$ to meet unit ....
+\subsection{Sobolev spaces}
+\begin{defi}
+  A normed vector space V is complete, if every Cauchy sequence $\left\{ v_k \right\}_k \subset V$ has a limit in V. A normed, complete vector space is called \index{Banach space}Banach space\end{defi}
+\begin{defi}
+  A Hilbert space is a Banachspace whose norm is induced by a inner product.\end{defi}
+Recall variational formulation of BVP with pase, homogeneous Neumann b.c.
+$$\int_\OO a \tri u \cdot \tri v + cuv d\ x = \int_\OO fv d\ x$$
+for all test functions v$\in \cinf _0(\OO)$\\
+\emph{Ideal space} of u and v in 2.9. is a Hilbert space whose inner product coincides with the bilinear form, i.e. it is equipped with the energy norm
+$$||v||_e ^2 = \int |a||\tri v |^2 +|c||v|^2 d\ x $$
+and the space is defined as 
+$$ H:= \left\{v : \OO \to \RR | \tx{weak gradient }\tri v \tx{ exists and } ||v||_e <\infty \right\}$$
+The same applies also to the test function, that are now more functions than in $\cinf_0$(equatation due to Meyser-Serrin Theorem, see Thm.2.15)
+\begin{defi}
+  The Sobolev space $H^1(\OO)$ is the space of all square integrable function's with square integrable weak gradients
+  $$H^1(\OO) := \left\{v\in L^2(\OO) : \tx{weak gradient }\tri v \tx{ exists and } ||\tri v||_{L^2} <\infty \right\}$$
+  with norm $$||v||^2 _{H^1(\OO)} = ||v||^2 _{L^2(\OO)} + D^2 ||\tri v||_{L^2(\OO)}$$
+  where $D= diam (\OO)$ to meet unit ....
 
 
-    The $H^1$-norm and the energy norm are equivalent if the latter is base on a $H^1-$elliptic and $H^1-$continuous bilinear form, i.e. $\exists C_1,C_2>0$ such that:
-    $$C_1 ||v||_e \leq ||v||_{H^1 }\leq C_2||v||_e \ \forall v \in H^1(\OO)$$
-  \end{defi}
-  \begin{defi} For $m \in \NN_0$ and $\OO\subset \RR^d$ we define the Sobolev of order m as ...
-  \end{defi}
+  The $H^1$-norm and the energy norm are equivalent if the latter is base on a $H^1-$elliptic and $H^1-$continuous bilinear form, i.e. $\exists C_1,C_2>0$ such that:
+  $$C_1 ||v||_e \leq ||v||_{H^1 }\leq C_2||v||_e \ \forall v \in H^1(\OO)$$
+\end{defi}
+\begin{defi} For $m \in \NN_0$ and $\OO\subset \RR^d$ we define the Sobolev of order m as ...
+\end{defi}
 
-  \begin{theorem} 2.15. Meyser-Serrin theorem\\
-    The space $C^\infty(\bar\OO)$is a dense subspace of $H^m(\OO)$ for all $m \in \NN_0$
-  \end{theorem}
-  \begin{defi}
-    $H^1 _0 (\OO)$ is defined as the completion of $\cinf_0(\OO)$ with respect to the $H^1-$norm
-  \end{defi}
-  \begin{exa}
-    Consider
-    \begin{align*}
-      -\tri \cdot a \tri u + cu & = f & \in \OO \\
-      u                         & =0  & on\ \p\OO
-    \end{align*}
-    solution:
-    \begin{align*}
-      (a) & \int_\OO a \tri u \cdot \tri v + cuv d\ x & = \int_\OO fv d\ x + \int_{\p\OO} \tri u \cdot n v d\ s(x) & \forall v \in \cinf_0(\OO)                 \\
-      (b) & ||v||_e ^2                                & := \int_\OO a \tri v \cdot \tri v + cvv d\ x                                                            \\
-          & ||v||_e ^2                                & \geq 0                                                     & \forall v \in V=H_0 ^1 \drw a,c\geq \gg >0 \\
-      (d) & \tx{Is }b \ H^1 _0-\tx{elliptic}?                                                                                                                   \\
-          & \exists \gg>0:|b(v,v)|                    & \geq \gg_e||v||_{H^1}^2                                    & \forall v \in H_0 ^1(\OO)                  \\
-          & |b(v,v)|                                  & \geq\gg\int_\OO (\tri v)^2 + v^2 d\ x                                                                   \\
-    \end{align*}
-  \end{exa}
-  \subsection{Theory of variational formulations}
-  \subsubsection{Elliptics and the Lemma of Lax-Milgram}
-  \begin{defi} The dual V' of a normal vector space V is the normed vector space of continuous linear forms on V. The dual space is equipped with the operator norm 
-    $$||f||_{V'} := sup\ _{v \in V\backslash \left\{0\right\}} \f{f(v)}{||v||_V}$$
-  \end{defi}
-  \begin{theorem}2.21 Lemma of Lax-Milgram\\
-    Let V be a reflexive Banach space. Let bilinear form $b:V \times V \to \RR$ or sesquilinear form $b:V\times V \to \CC$ be V-elliptic. Then, the variational problem (LVP), i.e. $b(u,v) = l(v)$ has for any $f \in V'$ a unique solution $u \in V$ with 
-    $$||u||_V \leq \f{1}{\gg_e}||f||_{V'}$$
-  \end{theorem}
-  \subsubsection{ The inf-sup conditions }
-  \begin{theorem}
-    The following statements are equivalent
-    \begin{enumerate}
-    \item For all $f \in V'$ the linear variational Problem (LVP) has a unique solution $u \in U$ that satisfies 
-      $$||u||_U \leq \f{1}{\gg}||f||_{V'}$$
-      with $\gg>0$ independent of f\\
-    \item The bilinear form b satisfies the \emph{inf-sup-conditions}
-      $$\exists \gg >0: inf\ _{w \in U \backslash\left\{0\right\} } sup\ _{v \in V \backslash \left\{0\right\}} \f{|b(w,v)|}{||v||_v||w||_U} \geq \gg \ (IS1)$$
-      $$\forall v \in V \backslash\left\{0\right\} : ... sup\ _{w \in U \backslash\left\{0\right\}} b(w,v)>0 \ (IS2)$$
-    \end{enumerate}
-  \end{theorem}
-  
-  \end{document}
+\begin{theorem} 2.15. Meyser-Serrin theorem\\
+  The space $C^\infty(\bar\OO)$is a dense subspace of $H^m(\OO)$ for all $m \in \NN_0$
+\end{theorem}
+\begin{defi}
+  $H^1 _0 (\OO)$ is defined as the completion of $\cinf_0(\OO)$ with respect to the $H^1-$norm
+\end{defi}
+\begin{exa}
+  Consider
+  \begin{align*}
+    -\tri \cdot a \tri u + cu & = f & \in \OO \\
+    u                         & =0  & on\ \p\OO
+  \end{align*}
+  solution:
+  \begin{align*}
+    (a) & \int_\OO a \tri u \cdot \tri v + cuv d\ x & = \int_\OO fv d\ x + \int_{\p\OO} \tri u \cdot n v d\ s(x) & \forall v \in \cinf_0(\OO)                 \\
+    (b) & ||v||_e ^2                                & := \int_\OO a \tri v \cdot \tri v + cvv d\ x                                                            \\
+    & ||v||_e ^2                                & \geq 0                                                     & \forall v \in V=H_0 ^1 \drw a,c\geq \gg >0 \\
+    (d) & \tx{Is }b \ H^1 _0-\tx{elliptic}?                                                                                                                   \\
+    & \exists \gg>0:|b(v,v)|                    & \geq \gg_e||v||_{H^1}^2                                    & \forall v \in H_0 ^1(\OO)                  \\
+    & |b(v,v)|                                  & \geq\gg\int_\OO (\tri v)^2 + v^2 d\ x                                                                   \\
+  \end{align*}
+\end{exa}
+\subsection{Theory of variational formulations}
+\subsubsection{Elliptics and the Lemma of Lax-Milgram}
+\begin{defi} The dual V' of a normal vector space V is the normed vector space of continuous linear forms on V. The dual space is equipped with the operator norm 
+  $$||f||_{V'} := sup\ _{v \in V\backslash \left\{0\right\}} \f{f(v)}{||v||_V}$$
+\end{defi}
+\begin{theorem}2.21 Lemma of Lax-Milgram\\
+  Let V be a reflexive Banach space. Let bilinear form $b:V \times V \to \RR$ or sesquilinear form $b:V\times V \to \CC$ be V-elliptic. Then, the variational problem (LVP), i.e. $b(u,v) = l(v)$ has for any $f \in V'$ a unique solution $u \in V$ with 
+  $$||u||_V \leq \f{1}{\gg_e}||f||_{V'}$$
+\end{theorem}
+\subsubsection{ The inf-sup conditions }
+\begin{theorem}
+  The following statements are equivalent
+  \begin{enumerate}
+  \item For all $f \in V'$ the linear variational Problem (LVP) has a unique solution $u \in U$ that satisfies 
+    $$||u||_U \leq \f{1}{\gg}||f||_{V'}$$
+    with $\gg>0$ independent of f\\
+  \item The bilinear form b satisfies the \emph{inf-sup-conditions}
+    $$\exists \gg >0: inf\ _{w \in U \backslash\left\{0\right\} } sup\ _{v \in V \backslash \left\{0\right\}} \f{|b(w,v)|}{||v||_v||w||_U} \geq \gg \ (IS1)$$
+    $$\forall v \in V \backslash\left\{0\right\} : ... sup\ _{w \in U \backslash\left\{0\right\}} b(w,v)>0 \ (IS2)$$
+  \end{enumerate}
+\end{theorem}
+
+\printindex % create the index at the end
+
+\end{document}
 
