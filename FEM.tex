@@ -1,4 +1,4 @@
-\documentclass[ngerman]{article}
+\documentclass[english]{article}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -175,6 +175,15 @@ and boundary conditions on boundary $\p \OO$ of $\OO$
 \item $j(x,t) n(x) = h(x,t)$ for $x \in \p\OO, t>0$ (Neumann b.c.)
 \item $j(x,t) n(x) + \bb(x) u(x,t) = h(x,t)$ (Robin b.c.)
 \end{enumerate}
+
+\begin{figure}[tbh]
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/OmegaDomain.pdf}
+  \end{center}
+  \caption{Illustration of a $\Omega$-domain for Neumann b.c.}
+  \label{omega-domain-figure}
+\end{figure}
+
 Static emit of constitute equatation.\\
 we suppose that the temperature does not change in time i.e. $\f{\p u}{\p t}=0$
 $$\drw \tri j(x) = f,\ j(x)=-A \tri u \drw -\tri A(x)\tri u(x) = f(x) + b.c.$$
@@ -302,12 +311,22 @@ disadvantages of FDM
   \begin{enumerate}
   \item transformation of BVP from strong formation to a so-called variational (weak) formation
   \item Discretization of the computational domain $\drw$ irregular meshes instead of grid
+
+\begin{figure}[tbh]
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/differentGrids.pdf}
+  \end{center}
+  \caption{Different types of grids}
+  \label{different-grids-figure}
+\end{figure}
+
     \begin{itemize}
     \item based on mesh we define basis functions of discrete sup-space of the space where we look for the weak solution
     \item basic solutions have a local support
     \end{itemize}
   \end{enumerate}
 \end{comm}
+
 \section{Variational Formation}
 \subsection{computational domain}
 \begin{defi}
@@ -321,6 +340,15 @@ disadvantages of FDM
   \item boundary slightly smoother than continuous (excluding slit/cusp domains)
   \end{itemize}
 \end{defi}
+
+\begin{figure}[tbh]
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/notLipschitzDomain.pdf}
+  \end{center}
+  \caption{Domains that are not Lipschitz}
+  \label{not-lipschitz-figure}
+\end{figure}
+
 \begin{comm}
   In practice only domains can be described by CAD software are relevant. This set of domains is usually equivalent to the following set of domains\end{comm}
 
@@ -333,6 +361,15 @@ disadvantages of FDM
     and for each $k\in\left\{1,...,p\right\}$ there exists a $C^1-$diffeomorphism (invertible mapping of smooth manifolds) $\Phi_k : [0,1]\to \GG_k$
   \end{itemize}
 \end{defi}
+
+\begin{figure}[tbh]
+  \begin{center}
+    \includegraphics[width=\textwidth]{figs/curvilinear.pdf}
+  \end{center}
+  \caption{curvilinear domain}
+  \label{curvilinear-domain-figure}
+\end{figure}
+
 \begin{defi}
   A subset $\OO\subset \RR^d$ is called \emph{computational domain} if it is bounded and its boundary is $C^1-$continuous, or if it is 
   \begin{itemize}
