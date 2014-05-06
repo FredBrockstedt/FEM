@@ -643,6 +643,65 @@ The same applies also to the test function, that are now more functions than in 
   \end{enumerate}
 \end{theorem}
 
+\begin{exa}
+3.1.\\
+Solution:\\
+$$sup\ _{v \in V \backslash\left\{0\right\}} \f{|b(w,v)|}{||w||_U ||v||_V} \geq \f{|b(,w,w)|}{||w||^2}\geq \gg$$
+\end{exa}
+\begin{exa}3.2\\
+$b(u,v) = l(v) \forall v \in V$\\
+show that if IS1 is not than more than on solution exists, and if IS2 does may not exists a solution.\\
+(a)\\
+$U\neq U, \ b(u,v) =0$ \\
+with not IS1 follows : $$inf\ sup\ \f{|b(v,w)|}{||w||_U||v||_V} =0$$
+$u=w \drw b(u,v) = 0$
+(b)\\
+Suppose $\exists u \in U s.t.\ b(u,v) = l(v) \forall v \in V$ Now take the v which negates IS2.\\
+With perticular testfunctions we get $0= b(u,v') =l(v')\neq 0$ for $l(v) = \int_\OO v d\ x$
+\end{exa}
+\subsection{well-posedness of elliptic BVPs}
+\subsubsection{BVP's with Dirichlet b.c.}
+\begin{comm}
+\begin{align*} \\
+-\nabla \cdot a \nabla u + cu &=f & in\ \OO\\
+u &=g & in\ \p\OO\\
+\int_\OO a \nabla u \cdot \nabla v + cuv d\ x &= \int_\OO fv d\ x & \forall v \in V = ?
+\end{align*}
+$U = H^1 _g (\OO) := \left\{v \in H^1 (\OO) | v = g on\ \p\OO \right\}, V= H^1 _0(\OO)$\\
+Suppose u = g on $\GG_D \subset \p \OO$ then we write $$U= H^1 _{\GG_D,g}, V= H^1_{\GG_D, 0}$$
+$H^1 _g(\OO)$ is not a vector space if $g \neq 0$\\
+$u\in H^1 _g(\OO)  \drw \lam u \notin H^1 _g(\OO) if\ \lam \neq 1$\\
+We can equivlenlty write $$u = u_0 + u _g with\ u_g \in H^1_g(\OO) and\ u_0 \in H^1 _0 (\OO)$$
+$\drw$ find $u_0 \in H^1 _0 (\OO) s.t.\ $ 
+$$\int_\OO a \tri u_0 \cdot \tri v + c u_0v d\ x = \int_{\OO}f v d\ x - \int_\OO a \tri u_g \cdot \tri v + c u_g v d\ x$$
+for all $v \in H^1 _0(\OO)$\\
+For which function g can we find an extension $u_g \in H^1_g (\OO)$?\\
+\begin{itemize}
+	\item Any restriction (trace) of a function $v\in H^1(\OO)$ to $\GG_D$ can be extendend to $u_g=v \in H^1(\OO)$.\\
+\item We can choose any function $u_g$ for which $u_g = g$ on $\GG_D$\\
+\item Let $\GG_D = \p\OO$ the trace span of $H^1(\OO)$ is $H^{\f{1}{2}}(\p\OO) \subset L^2(\p \OO)$
+$$||v||_{H^{\f{1}{2}}(\p\OO)} : = inf\ \left\{||w||_{H^1(\OO)} : w \in \cinf (\bar\OO) , w_{|\p\OO} = v\right\}$$
+\item For all functions $g \in H^{\f{1}{2}}(\p\OO)$ an extension exists.
+\item But also for all $g\in L^2 (\p \OO)$? NO! Think of discontinuing g.
+\end{itemize}
+\end{comm}
+For well posedness we have to prove 
+$$|b(v,v)|\geq \gg ||v||^2 _{H^1(\OO)} \ \forall v \in H^1 _0 (\OO)$$
+$$b(u,v) = \int_OO a \nabla u \cdot \nabla v + cuv d\ x$$
+Recall that $s\geq a_0 >0, c\geq 0$\\
+\begin{enumerate}
+	\item $c\geq c_0 >0$\\
+	$$||v||^2_{H^1} = \int_\OO \nabla v \cdot \nabla v + vv d\ x$$
+	$$b(v,v)\geq min\ \left\{a_0,c_0 \right\}\int_\OO \nabla v \cdot\nabla v + vv d\ x$$
+	\item c=0 with 2.24 \\
+	$$b(v,v)\geq a_0\int_\OO \nabla v \cdot \nabla v d\ x \geq \f{a_0}{2}||\nabla v||^2_{L^2(\OO)} + \f{a_0}{2C_F}||u||^2_{L^2(\OO)}$$
+	$$\geq \f{1}{2} min\ \left\{a_0, \f{a_0}{C_F}\right\} ||v||^2 _{H^1(\OO)}$$
+\end{enumerate}
+\begin{lemma}2.24 (Friedrichs inequality)\\
+Let $\OO$ be an open, bounded domain and $|\GG_D| >0$. Then for all $u \in H^1_{\GG_D,0}(\OO) $ there exists a constant $C_F(\OO,\GG_D)$ s.t. 
+$$||u||^2_{L^2(\OO)} \leq C_F diam\ (\OO)^2 ||\nabla u||^2 _{L^2(\OO)}$$
+\end{lemma}
+
 \printindex % create the index at the end
 
 \end{document}
