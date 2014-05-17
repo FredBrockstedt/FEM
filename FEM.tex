@@ -712,42 +712,42 @@ missing lecture 8.5.2014
 
 \newpage
 \begin{comm}
-well-posedness of (DVP)
-\begin{itemize}
-	\item for classical Galerki discretization with: $V_m\subset V$ well-posedness of DVP follows directly from V-elliticity of b.
-	\item quasi optimality (Cea's Lemma)
-	\item for grneral bi-/sesquilinear forms we need besudes IS1 and IS2 that the discrete inf-sup-condition is fullfilled\\
-	$$\exists \gg_n >0 : inf\ _{w_n \in W_n\backslash \left\{0\right\}} sup\ _{v_n \in V_n\backslash \left\{0\right\}} \f{|b(w_n,v_n)|}{||w_n||_W||v_n||V} \geq \gg_n \ DIS$$
-	\item one cannot conclude DIS from IS1 and IS2 since the supremum is taken over a much smaller set 
-	\item $\gg_n\geq \gg_0>0:$ asymptotic quasi optimality estimate
-	$$||u - u_n||_v \leq (1 + \f{||b||}{\gg_n})inf\ _{w_n \in W_n} ||u-w_n||_V$$
-\end{itemize}
-\subsection{ Algebraic setting}%2.11
-\begin{itemize}
-	\item DVP can be solved on a computer by introducing orderd bases\\
-	$$\left\{ p_n ^1 ,...,p_n ^N\right\} of\ V_n \ (test\ space\ )$$
-	$$\left\{q_n ^1 ,..., q_n ^N \right\} of W_n \ (trial\ space\ )$$
-	where $N=dim\ V_n = dim\ W_n$
-	\item Linear system 
-	$$B\cdot u = f \ (LSE)$$
-	with $$B:= (b(q_n ^k,qp_n ^j))^N _{j,k=1} \in \RR^{N\times N}$$
-	$$f:= (l(p_n ^j))^N _{j=1} \in \RR^{N}$$
-	\item Unknown are the coefficient u (cofficient vector) in the basis representisation 
-	\item LSE has a uniqe solution if and only if DVP has a unique solution
-	\item j is the row index, h is the column index
-	$$B=\left( 
-\begin{array}{ccc}
+  well-posedness of (DVP)
+  \begin{itemize}
+  \item for classical Galerki discretization with: $V_m\subset V$ well-posedness of DVP follows directly from V-elliticity of b.
+  \item quasi optimality (Cea's Lemma)
+  \item for grneral bi-/sesquilinear forms we need besudes IS1 and IS2 that the discrete inf-sup-condition is fullfilled\\
+    $$\exists \gg_n >0 : inf\ _{w_n \in W_n\backslash \left\{0\right\}} sup\ _{v_n \in V_n\backslash \left\{0\right\}} \f{|b(w_n,v_n)|}{||w_n||_W||v_n||V} \geq \gg_n \ DIS$$
+  \item one cannot conclude DIS from IS1 and IS2 since the supremum is taken over a much smaller set 
+  \item $\gg_n\geq \gg_0>0:$ asymptotic quasi optimality estimate
+    $$||u - u_n||_v \leq (1 + \f{||b||}{\gg_n})inf\ _{w_n \in W_n} ||u-w_n||_V$$
+  \end{itemize}
+  \subsection{ Algebraic setting}%2.11
+  \begin{itemize}
+  \item DVP can be solved on a computer by introducing orderd bases\\
+    $$\left\{ p_n ^1 ,...,p_n ^N\right\} of\ V_n \ (test\ space\ )$$
+    $$\left\{q_n ^1 ,..., q_n ^N \right\} of W_n \ (trial\ space\ )$$
+    where $N=dim\ V_n = dim\ W_n$
+  \item Linear system 
+    $$B\cdot u = f \ (LSE)$$
+    with $$B:= (b(q_n ^k,qp_n ^j))^N _{j,k=1} \in \RR^{N\times N}$$
+    $$f:= (l(p_n ^j))^N _{j=1} \in \RR^{N}$$
+  \item Unknown are the coefficient u (cofficient vector) in the basis representisation 
+  \item LSE has a uniqe solution if and only if DVP has a unique solution
+  \item j is the row index, h is the column index
+    $$B=\left( 
+      \begin{array}{ccc}
 	x&x&x \\
 	x&x&x \\
 	x&x&x
-\end{array}\right)
-$$
-with j rownumber and k columnnumber
-\end{itemize}
+      \end{array}\right)
+    $$
+    with j rownumber and k columnnumber
+  \end{itemize}
 \end{comm}
 \begin{comm}
-We started with 
- \begin{align*}
+  We started with 
+  \begin{align*}
     -\tri \cdot a \tri \cdot u + su &= f& in\ \OO\\
     u&=g &on\ \GG_D
     a \tri u \cdot n &= h& on\ \GG_N\\
@@ -764,102 +764,102 @@ We started with
   \\
   
   
-  \end{comm}
-  \begin{exa}
+\end{comm}
+\begin{exa}
   Find $u \in V \subset L^2(]0,1[)$ s.t.\\
   $$\int _0 ^1 u(x) v(x) d\ x = \int_0 ^1 e^x v(x) d\ x$$
   for all V.\\
   Solve for 
   \begin{enumerate}
-	\item $V_n = span\ \left\{x^k , k=0,...,n-1\right\}$
-	\item $V_n = span\ \left\{sin\ (k\pi x) , k=1,...,n\right\}$
-	\item $V_n = span\ \left\{ X_{ \right\[  \f{k-1}{n},\f{k}{n}\right\[ } \right\} $
-	
-\end{enumerate}
-(1): $U_n(x) = \sum_{j=1}^n c_j v_j (x)$\\
-$$\int_0 ^1 \sum_{j=1}^n c_j v_j v_j d\ x = \int_0 ^1 e^x v_j d\ x$$
-$$\int_0 ^1 | . |d\ x = x|^1 _0 =1$$
-$$\int_0 ^1 x d \  = \f{x^2}{2}|^1 _0 = \f{1}{2}$$
-$$B_{j,k} = \int_0 ^1 x^{k-1} x^{j-1} d\ x = \f{1}{j+i-1}$$
-Solution is the Hilbertmatrix.\\
-The others are follow the same principle. They are :\\
-B= $\f{1}{2} I$ with $f_j = \f{j\pi}{j^2 \pi^2 +1} (e (-1)^{j+1} +1)$\\
-B= $\f{1}{n} I$ with $f_j = (e^{\f{j}{n}} - e^{\f{j-1}{n}})$\\
-(b) the condition number is $\chi (A) = ||A||||A^{-1}||= ||\f{\lam_{max\ }}{\lam_{min\ }}$
-The condition of the last two are 1. \\
-For the first example we have for n=1 a condition of 1, for n=2 we have around 19 and for 10 we have $1,6 \cdot 10^{13}$
-
+  \item $V_n = span\ \left\{x^k , k=0,...,n-1\right\}$
+  \item $V_n = span\ \left\{sin\ (k\pi x) , k=1,...,n\right\}$
+  \item $V_n = span\ \left\{ X_{ \left[ {k-1 \over n},{k \over n} \right] } \right\} $
+    
+  \end{enumerate}
+  (1): $U_n(x) = \sum_{j=1}^n c_j v_j (x)$\\
+  $$\int_0 ^1 \sum_{j=1}^n c_j v_j v_j d\ x = \int_0 ^1 e^x v_j d\ x$$
+  $$\int_0 ^1 | . |d\ x = x|^1 _0 =1$$
+  $$\int_0 ^1 x d \  = \f{x^2}{2}|^1 _0 = \f{1}{2}$$
+  $$B_{j,k} = \int_0 ^1 x^{k-1} x^{j-1} d\ x = \f{1}{j+i-1}$$
+  Solution is the Hilbertmatrix.\\
+  The others are follow the same principle. They are :\\
+  B= $\f{1}{2} I$ with $f_j = \f{j\pi}{j^2 \pi^2 +1} (e (-1)^{j+1} +1)$\\
+  B= $\f{1}{n} I$ with $f_j = (e^{\f{j}{n}} - e^{\f{j-1}{n}})$\\
+  (b) the condition number is $\chi (A) = ||A||||A^{-1}||= ||\f{\lam_{max\ }}{\lam_{min\ }}$
+  The condition of the last two are 1. \\
+  For the first example we have for n=1 a condition of 1, for n=2 we have around 19 and for 10 we have $1,6 \cdot 10^{13}$
+\end{exa}
 \section{Linear Finite Element Method}
-\begin{comm}
-The FEM provides
-\begin{enumerate}
-	\item Spaces $V_n$ of functions that are piecewise smooth and simple, and
-	\item locally supported basis functions of the space
-\end{enumerate}
-to achieve
-\begin{enumerate}
-	\item good approximation of the solution $u \in V$,
-	\item an efficient assembly fo the system matrix with desireable properties (well conditioned and/or sparse)
-\end{enumerate}
-\end{comm}
-\subsection{Meshes}
-\begin{defi}
-\begin{itemize}
-	\item A \emph{mesh} $\mathcal{M}$ of the computational domain $\OO\subset \RR^d$, $d=1,2,3$ is a collection of non-overlapping \emph{cells} $\left\{K_i \right\}^M_{i=1} , M = |\mathcal{M}|$,that are open, simply connected subsets $K_i \subset \OO$
-	\item Each cell $K_i$ is a $\cinf-$diffeomorphism image of a closed d-dimensional polytope $\hat K$ (reference cell), which is the convex hull of (at least) d+1 points  in $\RR^d$\\
-\item Each cell $K_i$ is an interval (d=1), Lipschtiz-polygon (d=2), or a Lipschitz polyhedron(d=3)\\
-\item The mesh $\mathcal{M}$ contains a set of nodes (or verticies), $\N(\M)$, edges $\E(\M)$ id d>1 and faces $\F(M)$ if d=3\\
-\item somteimes the components of dimension d-1 are called faces.\\
-\item The \emph{topology} of the mesh is described by the connectivity of cells, faces, edges and nodes, e.g. does a face belong to a cell, or more precisely is a face contained in the closure of a cell.
-\item A mesh is called the conforming if $\bar K_i \cap \bar K_j$ of any two adjacent cells $K_i,K_j$ is a face of both cells.
+  \begin{comm}
+    The FEM provides
+    \begin{enumerate}
+    \item Spaces $V_n$ of functions that are piecewise smooth and simple, and
+    \item locally supported basis functions of the space
+    \end{enumerate}
+    to achieve
+    \begin{enumerate}
+    \item good approximation of the solution $u \in V$,
+    \item an efficient assembly fo the system matrix with desireable properties (well conditioned and/or sparse)
+    \end{enumerate}
+  \end{comm}
+  \subsection{Meshes}
+  \begin{defi}
+    \begin{itemize}
+    \item A \emph{mesh} $\mathcal{M}$ of the computational domain $\OO\subset \RR^d$, $d=1,2,3$ is a collection of non-overlapping \emph{cells} $\left\{K_i \right\}^M_{i=1} , M = |\mathcal{M}|$,that are open, simply connected subsets $K_i \subset \OO$
+    \item Each cell $K_i$ is a $\cinf-$diffeomorphism image of a closed d-dimensional polytope $\hat K$ (reference cell), which is the convex hull of (at least) d+1 points  in $\RR^d$\\
+    \item Each cell $K_i$ is an interval (d=1), Lipschtiz-polygon (d=2), or a Lipschitz polyhedron(d=3)\\
+    \item The mesh $\mathcal{M}$ contains a set of nodes (or verticies), $\N(\M)$, edges $\E(\M)$ id d>1 and faces $\F(M)$ if d=3\\
+    \item somteimes the components of dimension d-1 are called faces.\\
+    \item The \emph{topology} of the mesh is described by the connectivity of cells, faces, edges and nodes, e.g. does a face belong to a cell, or more precisely is a face contained in the closure of a cell.
+    \item A mesh is called the conforming if $\bar K_i \cap \bar K_j$ of any two adjacent cells $K_i,K_j$ is a face of both cells.
 
-% picuter of rectangle with lines from edges to sides  and hangingnodea
+      % picuter of rectangle with lines from edges to sides  and hangingnodea
 
-\item \emph{Grids} are meshes with translation invariant structure, these can be tensor product grids, that are meshes whose cells are quadrilaterals (d=2) or hexaedron (d=3)
-\item the \emph{orientation} of a geometric objects of hte mesh is important when defining higher order basis functions.
-\begin{enumerate}
-	\item for an edge we haev to define its directions
-	\item for a face we have to specify an ordering of the edges along its boundary
+    \item \emph{Grids} are meshes with translation invariant structure, these can be tensor product grids, that are meshes whose cells are quadrilaterals (d=2) or hexaedron (d=3)
+    \item the \emph{orientation} of a geometric objects of hte mesh is important when defining higher order basis functions.
+      \begin{enumerate}
+      \item for an edge we haev to define its directions
+      \item for a face we have to specify an ordering of the edges along its boundary
 	
-\end{enumerate}
+      \end{enumerate}
 
-\end{itemize}
-\subsection{linear finite elements on triangular meshes}
-Reference cell $\hat K \ (d=2)$
-\begin{itemize}
-	\item for triangles reference triangles with nodes (0,0),(1,0),(0,1)
-	\item quadrilaterals reference quad $[0,1]^2$ or $[-1,1]^2$
-\end{itemize}
-Affine mapping $\Phi$\\
-linear bijective mapping from a refence cell(triangle or prarllelogramm) to a physical cell (triangle/parallelogramm) in the mesh $$\Phi : \RR^d \to \RR^d , \I \to F \I + \tau$$
-$$F \in \RR^{d\times d} \tx{ is regular, } \tau \in \RR^d$$
-A mesh is called \emph{affine equivalent} of all its cells arise as affine images of a single reference cell
-\subsubsection{Basis functions}
-$\OO\subset \RR^2$ is a lipschitz polygon\\
-$\M$ is a conforming mesh of $\OO$ containing only triangles as cells.
-\begin{defi} We define  the finite elements space of piecewise linear continous functions
-$$S^1 (\OO,\M) := \left\{u \in C^0 (\OO) : u(x)_{|K} = a+bx_1+cx_2 \ \forall K \in \M\right\}$$
-\end{defi}
-\begin{prop}
-\begin{itemize}
-	\item $S^1 (\OO,\M) \subset H^1(\OO)$
-	\item $u \in S^1(\OO,\M) $ is uniquely defined by the values u(P) on the nodes $P \in \N(\M)$
-	\item N= dim$ S^1(\OO,\M) = |\N | <\infty$
-	\item $S^1(\OO,\M) = span\ \left\{b_P(x) : P\in \N(\M) \right\} $ with so called functions $b_P \in S^1(\OO,\M) \ b_P(P') = \dd_{P=P'}, $ for all $P'\in \N(\M)$ ($\dd$ is the Kronecker symbol)
-\end{itemize}
-\end{prop}
-Let b be the vector of the basis function. Then an arbitary FE function $v \in  S^1(\OO,\M)$ can be written as 
-$$v(x) = \sum_{P \in \N(\M)} v(P) b_P(x) = v^T b_P(x)$$
-\subsubsection{Assembling system matix and load vector}
-Consider shape functions, that are restrictions of the basis functions to one cell $K \in M$ For $S^1(\OO,\M)$ these are exactly three, each for one nod of K. The shape functions can be defined on a single cell K as 
-$$N_{K,P_j(K)}(x) = \hat N_j(\Phi^{-1}_K x)$$
-where the element shape functions are defined by $\hat N_0(\I ) = 1 - \I_1-\I_2, \ \hat N_1(\I) =\I_1 , \ \hat N_2(\I) = \I_2  $ on the reference cell $\hat K$\\
+    \end{itemize}
+    \subsection{linear finite elements on triangular meshes}
+    Reference cell $\hat K \ (d=2)$
+    \begin{itemize}
+    \item for triangles reference triangles with nodes (0,0),(1,0),(0,1)
+    \item quadrilaterals reference quad $[0,1]^2$ or $[-1,1]^2$
+    \end{itemize}
+    Affine mapping $\Phi$\\
+    linear bijective mapping from a refence cell(triangle or prarllelogramm) to a physical cell (triangle/parallelogramm) in the mesh $$\Phi : \RR^d \to \RR^d , \xi \to F \xi + \tau$$
+    $$F \in \RR^{d\times d} \tx{ is regular, } \tau \in \RR^d$$
+    A mesh is called \emph{affine equivalent} of all its cells arise as affine images of a single reference cell
+    \subsubsection{Basis functions}
+    $\OO\subset \RR^2$ is a lipschitz polygon\\
+    $\M$ is a conforming mesh of $\OO$ containing only triangles as cells.
+    \begin{defi} We define  the finite elements space of piecewise linear continous functions
+      $$S^1 (\OO,\M) := \left\{u \in C^0 (\OO) : u(x)_{|K} = a+bx_1+cx_2 \ \forall K \in \M\right\}$$
+    \end{defi}
+    \begin{prop}
+      \begin{itemize}
+      \item $S^1 (\OO,\M) \subset H^1(\OO)$
+      \item $u \in S^1(\OO,\M) $ is uniquely defined by the values u(P) on the nodes $P \in \N(\M)$
+      \item N= dim$ S^1(\OO,\M) = |\N | <\infty$
+      \item $S^1(\OO,\M) = span\ \left\{b_P(x) : P\in \N(\M) \right\} $ with so called functions $b_P \in S^1(\OO,\M) \ b_P(P') = \dd_{P=P'}, $ for all $P'\in \N(\M)$ ($\dd$ is the Kronecker symbol)
+      \end{itemize}
+    \end{prop}
+    Let b be the vector of the basis function. Then an arbitary FE function $v \in  S^1(\OO,\M)$ can be written as 
+    $$v(x) = \sum_{P \in \N(\M)} v(P) b_P(x) = v^T b_P(x)$$
+    \subsubsection{Assembling system matix and load vector}
+    Consider shape functions, that are restrictions of the basis functions to one cell $K \in M$ For $S^1(\OO,\M)$ these are exactly three, each for one nod of K. The shape functions can be defined on a single cell K as 
+    $$N_{K,P_j(K)}(x) = \hat N_j(\Phi^{-1}_K x)$$
+    where the element shape functions are defined by $\hat N_0(\xi ) = 1 - \xi_1-\xi_2, \ \hat N_1(\xi) =\xi_1 , \ \hat N_2(\xi) = \xi_2  $ on the reference cell $\hat K$\\
 
-$P_j(K) $ is the j-th node of the triangle K, j=0,1,2 with coordinates $p_j$. Then the (affine) element mapping reads 
-$$x= \Phi_k(\I) = p_0 + \I(p_1-p_2)+\I(p_2-p_0) = \tau + \F_k \I$$
-with $\F_k= (p_1-p_0,p_2-p_0) , \ \tau = p_0$
-\end{defi}
- \printindex  % create the index at the end
+    $P_j(K) $ is the j-th node of the triangle K, j=0,1,2 with coordinates $p_j$. Then the (affine) element mapping reads 
+    $$x= \Phi_k(\xi) = p_0 + \xi(p_1-p_2)+\xi(p_2-p_0) = \tau + \F_k \xi$$
+    with $\F_k= (p_1-p_0,p_2-p_0) , \ \tau = p_0$
+  \end{defi}
+  \printindex  % create the index at the end
 
 
 
