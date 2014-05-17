@@ -20,6 +20,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{graphics}
+\usepackage{float}
 
 %% create an index 
 \usepackage{makeidx}
@@ -184,7 +185,7 @@ and boundary conditions \index{boundary condition} on boundary $\p \OO$ of $\OO$
 \item $j(x,t) n(x) + \bb(x) u(x,t) = h(x,t)$ (Robin b.c.)
 \end{enumerate}
 
-\begin{figure}[tbh]
+\begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{figs/OmegaDomain.pdf}
   \end{center}
@@ -320,7 +321,7 @@ disadvantages of FDM
   \item transformation of BVP from strong formation to a so-called variational \index{variational} (weak) formation
   \item Discretization of the computational domain $\drw$ irregular meshes instead of grid
 
-    \begin{figure}[tbh]
+    \begin{figure}[H]
       \begin{center}
         \includegraphics[width=\textwidth]{figs/differentGrids.pdf}
       \end{center}
@@ -349,7 +350,7 @@ disadvantages of FDM
   \end{itemize}
 \end{defi}
 
-\begin{figure}[tbh]
+\begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{figs/notLipschitzDomain.pdf}
   \end{center}
@@ -370,7 +371,7 @@ disadvantages of FDM
   \end{itemize}
 \end{defi}
 
-\begin{figure}[tbh]
+\begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{figs/curvilinear.pdf}
   \end{center}
@@ -812,7 +813,7 @@ missing lecture 8.5.2014
   \item somteimes the components of dimension d-1 are called faces.\\
   \item The \emph{topology} of the mesh is described by the connectivity of cells, faces, edges and nodes, e.g. does a face belong to a cell, or more precisely is a face contained in the closure of a cell.
   \item A mesh is called the conforming if $\bar K_i \cap \bar K_j$ of any two adjacent cells $K_i,K_j$ is a face of both cells.
-    \begin{figure}[tbh]
+    \begin{figure}[H]
       \begin{center}
         \includegraphics[width=\textwidth]{figs/hangingNodes.pdf}
       \end{center}
@@ -821,7 +822,7 @@ missing lecture 8.5.2014
     \end{figure}
 
   \item \emph{Grids} are meshes with translation invariant structure, these can be tensor product grids, that are meshes whose cells are quadrilaterals (d=2) or hexaedron (d=3)
-    \begin{figure}[tbh]
+    \begin{figure}[H]
       \begin{center}
         \includegraphics[width=\textwidth]{figs/grids.pdf}
       \end{center}
@@ -839,7 +840,7 @@ missing lecture 8.5.2014
 \end{defi}
 \subsection{linear finite elements on triangular meshes}
 Reference cell $\hat K \ (d=2)$
-\begin{figure}[tbh]
+\begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{figs/referenceCell.pdf}
   \end{center}
@@ -850,7 +851,7 @@ Reference cell $\hat K \ (d=2)$
 \item for triangles reference triangles with nodes (0,0),(1,0),(0,1)
 \item quadrilaterals reference quad $[0,1]^2$ or $[-1,1]^2$
 \end{itemize}
-\begin{figure}[tbh]
+\begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{figs/quadrilaterals.pdf}
   \end{center}
@@ -879,7 +880,7 @@ $\M$ is a conforming mesh of $\OO$ containing only triangles as cells.
 Let b be the vector of the basis function. Then an arbitary FE function $v \in  S^1(\OO,\M)$ can be written as 
 $$v(x) = \sum_{P \in \N(\M)} v(P) b_P(x) = v^T b_P(x)$$
 \subsubsection{Assembling system matix and load vector}
-\begin{figure}[tbh]
+\begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{figs/hatFunction.pdf}
   \end{center}
@@ -888,7 +889,7 @@ $$v(x) = \sum_{P \in \N(\M)} v(P) b_P(x) = v^T b_P(x)$$
 \end{figure}
 
 Consider shape functions, that are restrictions of the basis functions to one cell $K \in M$ For $S^1(\OO,\M)$ these are exactly three, each for one nod of K. 
-\begin{figure}[tbh]
+\begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{figs/shapeFunctions.pdf}
   \end{center}
@@ -899,7 +900,7 @@ Consider shape functions, that are restrictions of the basis functions to one ce
 The shape functions can be defined on a single cell K as 
 $$N_{K,P_j(K)}(x) = \hat N_j(\Phi^{-1}_K x)$$
 where the element shape functions are defined by $\hat N_0(\xi ) = 1 - \xi_1-\xi_2, \ \hat N_1(\xi) =\xi_1 , \ \hat N_2(\xi) = \xi_2  $ on the reference cell $\hat K$\\
-\begin{figure}[tbh]
+\begin{figure}[H]
   \begin{center}
     \includegraphics[width=\textwidth]{figs/referenceCellKappaHat.pdf}
   \end{center}
