@@ -912,6 +912,142 @@ $P_j(K) $ is the j-th node of the triangle K, j=0,1,2 with coordinates $p_j$. Th
 $$x= \Phi_k(\xi) = p_0 + \xi(p_1-p_2)+\xi(p_2-p_0) = \tau + \F_k \xi$$
 with $\F_k= (p_1-p_0,p_2-p_0) , \ \tau = p_0$
 % \end{defi}
+
+
+%lecture 20.5.
+Shape functions (restrictions of basis functions to one cell k) $$N_{k,P_j(K) }(x) = \hat N _j (\Phi _K ^{-1} x)$$
+with element shape functions 
+$$\hat N_0 (\xi) = 1 - \xi_1-\xi_2, \ \hat N_1(\xi ) = \xi_1 , \ \hat N_2(\xi) = \xi_2 $$
+Basis functions result from shape functions by glueing\\
+$$b_p(X) = \left\{\stackrel{N_{K,P_j}(x), x\in K,P\in N(k), P=P_j(K)}{0 \ otherwise}\right\}$$
+This can be expressed in terms of connectivity matrices or T-metrics
+$$T_K \in \RR^{3 \times n} \ (T_K )_{ij}=\left\{\stackrel{1, P_i(K) = P_j(M)}{0, otherwise}\right\}$$
+These T-metrices have an extremly sparse format
+$$T_K=\left( 
+\begin{array}[pos]{spalten}
+	0...010.........0\\
+	0.......010.....0\\
+	0...........010..0\\
+	e.g.101,502,1000
+\end{array}
+\right)$$
+T-matrizes give an relation of local number of (element) shape function and the global numbering of basis functions.\\
+Now we can express the basis functions on one cell K in temrs of shape functions and T-matrix
+$$b_{P_i}(x) _{|K} = \sum_{k=1}^3 (T_K)_{k,i}N_{K,P_k(K)(x)}$$
+and the system matrix reads
+\begin{align*}(B)  _{i,j} &= b(b_{P_j},b_{P_i})\\
+&=\sum_K b_K(b_{P_j _{|K}}, b_{P_i {|K}})\\
+&=\sum_K\sum_{k=1}^3\sum_{l=1}^3 b_k((I_K)_{k,j}N_{K,P_k(K)},(I_k)_{l,i}N_{K,P_l(K)})\\
+&=\sum_K\sum_{k=1}^3\sum_{l=1}^3 (T_K)_{k,j} \underbrace{b_K(N_{K,P_k(K)},N_{K,P_l(K)})}_{=(B_K)_{l,k} (element\ matrix\ )}(T_K)_{l,j}\\
+&= \sum_K (T_K)^T _{.,j} B_K(T_K)_{.,i}\\
+B&= \sum_K T_K ^T B_K T_K
+\end{align*}
+This means we have to integrate only over the shape functions and to sum up the contribution over all cells
+\subsubsection{Element stiffiness metrix}
+$$\mathcal{a}(u,v) = \int _\OO a \nabla u \cdot \nabla v d\ x$$
+We transform the derivates to $\hat K$. By chain rule and with 
+$$ \nabla=(\f{\p}{\p x_1}, \f{\p}{\p x_2})^T , \ \hat \nabla=(\f{\p}{\p\xi_1}, \f{\p}{\p \xi_2})^T$$
+we have 
+$$\p_{\xi_1}N_{K,P_j}(x(\xi))= \p_{x_1}N_{K,P)\xi(x)}\f{\p x_1}{\p \xi_1}+\p_{x_2}N_{K,P)\xi(x)}\f{\p x_2}{\p \xi_1}$$
+$$\p_{\xi_2}N_{K,P_j}(x(\xi))= \p_{x_1}N_{K,P)\xi(x)}\f{\p x_1}{\p \xi_2}+\p_{x_2}N_{K,P)\xi(x)}\f{\p x_2}{\p \xi_2}$$
+and thus
+$$\hat\nabla N_{K,P_j}(x(\xi))= (\f{\p \Phi_K}{\p \xi})^T \nabla N_{K,P_j}(x)$$
+$$\nabla N_{k,P_j}(x) = F_K ^{-T}\hat\nabla N_{K,P_j}(x(\xi)) = F_K ^{-T} \hat \nabla \hat N_j (\xi)$$
+\bagin{align*}
+\mathcal{a}_K (N_{K,P_j},N_{K,P_i} )&= \int_K a(x) (\nabla N_{K,P_j}(x))^T(\nabla N_{K,P_i}(x)) d\ x\\
+&=\int_{\hat{k}}a (\Phi_K \xi)(\hat \nabla N_{i}(\xi))^T F_K ^{-1}
+\end{align*}
+$F_K ^{-1} = |F_K|^{-1} adj\ (F_K)$\\
+$F_K ^{-T} \hat \nabla \hat N_i(\xi) \ \underbrace{|F_K|}_{det\ (F_K)} d\ \xi $\\
+e.g. $$adj\ \left(
+\begin{array}[pos]{spalten}
+	a&b\\
+	c&d
+\end{array}
+\right)= \left(
+\begin{array}[pos]{spalten}
+	d&-b\\
+	-c&a
+\end{array}
+\right) $$
+$$= \int_{\hat K} a (\Phi_K \xi ) (\hat \nabla \hat N_j(\xi))^T adj\ (F_K) adj\ (F_K)^T \hat \nabla \hat N _i (\xi) |F_K|^{-1} d\ \xi$$
+
+The gradients of the elemnts shape functions are constant vectors\\
+$$\hat\nabla \hat N_0 = \left(\stackrel{-1}{-1}\right), \ \hat \nabla \hat N_1 = \left(\stackrel{1}{0}\right) , \ \hat\nabla \hat N_2 = \left(\stackrel{0}{1}\right)$$
+$(\hat N_0 = 1-\xi_1 - \xi_2)$\\
+so we can simplify 
+$$(A_K)_{i,j} = \mathcal{a}_K (N_{K,P_j}, N_{K,P_i}) = \f{a_K}{2}\left(\hat \nabla \hat N_j\right)^T adj\ (F_K) adj\ (F_K)^T \hat \nabla \hat N_i |F_K|^{-1}$$
+where $$a_K = \f{1}{|K|}\int_K a(x) d\ x \ (average heat conduction in K)$$
+Note that $|F_K| = 2|K|$\\
+$$A_K = \f{a_K}{4|K|}D_K ^T D_K$$
+with 
+$$D_K = \left(
+\begin{array}[pos]{spalten}
+	y_1-y_2 & y_2 - y_0 & y_0-y_1\\
+	x_2-x_1 & x_0 -x_2 & x_1-x_0
+\end{array}
+\right)$$
+Element mass matrix
+$$m(u,v) = \int c u v d\ x$$
+\begin{align*}(M_K)_{i,j} &= m(N_{K,P_j} (x), N_{K, P_i} (x))\\
+&= \int_K c(x) N_{K,P_j}(x) N_{K,P_i}(x) d\ x\\
+&= \int_{\hat k} c(\Phi_K \xi) \hat N_j (\xi) \hat N_i (\xi) |F_K| d\ \xi\\
+\end{align*}
+Assume c is constant in K $c_{|K} = c_K$
+$$(M_K)_i,j = \left\{
+\begin{array}[pos]{spalten}
+	\f{1}{6} c_K|K| &: i=j\\
+	\f{1}{12}c_K|K| &: i\neq j
+\end{array}
+\right\}$$
+\subsubsection{Element load vector}
+$$l(v) = \int _{\OO} f v d\ x$$
+$$(f_K)_i= l(N_{K,P_i}(x)) = \int_K f N_{K , P_i}(x) d\ x$$
+For general smooth functions f we use numerical quadrations to evaluate the integral. The simplest rule is 
+$$\int_K f(x) N_{K,P_i}(x) \approx |K| f(x_K) N_{K,P_i}(x_K)$$
+where $x_K$ is the barycenter (Schwerpunkt) of the cell K. This rule is only exact for linear functions and as the shape functions are linear it will only provide reasonable result if f is almost constant in K.\\
+
+$$-\Delta u + u = f  \ in\ \OO $$
+$$\nabla u \cdot n = 0 \ on\ \p \OO$$
+
+
+\subsubsection{Numerical quadrations}
+There are Gau\ss{} quadrature rules dor triangles which an exact for polynomials of maximal total degree 1,2,..,5 which use 1,3,4,6 and 7 points respectivly, see for example (P.Solin, page 141)\\
+Note that these rules are defined on the triangle with the nodes (-1,-1), (1,-1),(-1,1).
+
+%picture in coord-system. in addition to triangle on 0 0,1 0, and 0 1. $\xi_1$  on x and $\xi_2$ on y-axe
+
+\begin{align*}
+\xi_2&= a \xi_1 +b\\
+1&= -a + b\\
+-1&=a+b\\
+b=0& a=-1
+\end{align*}
+$$\int_{\hat K} f(\xi_1,\xi_2) d\ \xi = \int_0 ^1 \int_0 ^{1-\xi_1} f(\xi_1,\xi_2)  d\ \xi_2 d\ \xi_1 =\f{1}{4} \int_{-1} ^1 \int _{-1} ^{-\xi_1} f(\f{\xi_1+1}{2} , \f{\xi_2+1}{2}) d\ \xi_2 d\ \xi_1$$
+$$\approx \f{1}{4} \sum^n _{j=1} w_j f (\f{\xi_{1,j}+1}{2},\f{\xi_{2,j}+1}{2})$$
+The error of the numerical quadrature must not dominate the total discretization error in the relavent norms.
+\subsubsection{Duffy transformation}
+e.g. Gau\ss{}-Legendre\\
+
+%picture
+
+$$\int_{\hat K} f(\xi_1,\xi_2) d\ \xi = \int_{\hat{\hat K}} \underbrace{f (\hat\xi_1(1-\hat\xi_2) , \hat\xi_2)(1-\hat\xi_2)}_{\hat f(\hat\xi_1,\hat\xi_2)} d\ \hat\xi$$
+
+Numerical quadrature on the unit square [0,1]$^2$. The intergration is on $[0,1]^2$, so a tensor product of 1D quadratic rules can be applied. Usually 1D rules are defined on [-1,1], so we use 
+$$\int_0 ^1 f(\xi) d\ \xi = \f{1}{2}\int_{-1} ^1 f(\f{\xi+1}{2}) d\ \xi \approx\f{1}{2} \sum_{j=1} ^n w_j f(\f{\xi_j +1}{2})$$
+where $w_j$ are the weights and $\xi_j$ the abscissas of the quadrature rule
+
+\\
+
+Gau\ss{}-Legendre rule\\
+\begin{itemize}
+	\item abscissons are the roots of the n-th Legenre-Polynomial $P_n(\xi)$
+	\item weight:
+	$$w_j = \f{2}{(1-\xi_j ^2)(P_n'(\xi_j))^2}$$
+	\item exact for polynomials of degree 2n-1
+	\item absciccioen and weights are provided by the matlab function gaugleg,m that is (wil;l be avaible on the course webpage)
+\end{itemize}
+$$\approx \f{1}{4} \sum_{i=1}^{n_1} w_i \sum_{j=1}^{n_2} w_j f (\f{\hat\xi_{1,i}+1}{2},\f{\hat\xi_{2,j}+1}{2})$$
 \printindex  % create the index at the end
 
 
